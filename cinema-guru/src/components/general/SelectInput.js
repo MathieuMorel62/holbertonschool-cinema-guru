@@ -1,46 +1,37 @@
-import './general.css';
 import React from 'react';
 import PropTypes from 'prop-types';
+import './general.css';
 
-export default function SelectInput(props) {
-    const {
-        label,
-        options,
-        Multiple,
-        className,
-        value,
-        setValue
-    } = props;
+const SelectInput = ({ label, options = [], className, value, setValue }) => {
+  const handleSelect = (event) => {
+    setValue(event.target.value);
+  };
 
-    function handleSelect(e) {
-        setValue(e.target.value);
-    }
+  return (
+    <div className={`select-input-container ${className}`}>
+      <label>{label}</label>
+      <select value={value} onChange={handleSelect}>
+        {options.map((option, index) => (
+          <option key={index} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
 
-    return (
-        <div className={className}>
-            <label>{label}</label>
-            <select multiple={Multiple} value={value} onChange={handleSelect}>
-                {options.map((opt, index) =>
-                <option key={index} value={opt.value}>{opt.text}</option>
-                )}
-            </select>
-        </div>
-    );
-}
+SelectInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.any.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  className: PropTypes.string,
+  value: PropTypes.any.isRequired,
+  setValue: PropTypes.func.isRequired,
+};
 
-SelectInput.porpTypes = {
-    label: PropTypes.string,
-    options: PropTypes.array,
-    Multiple: PropTypes.bool,
-    className: PropTypes.string,
-    value: PropTypes.any.isRequired,
-    setValue: PropTypes.func
-}
-
-SelectInput.defaultProps = {
-    label: "",
-    options: [],
-    Multiple: false,
-    className: "",
-    setValue: () => {}
-}
+export default SelectInput;
