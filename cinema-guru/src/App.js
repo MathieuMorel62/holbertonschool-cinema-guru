@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Authentication from './routes/auth/Authentication';
+
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,7 +35,7 @@ const App = () => {
       {isLoggedIn ? (
         <div>Welcome, {userUsername}!</div>
       ) : (
-        <div>Please log in to continue.</div>
+        <Authentication />
       )}
     </div>
   );
