@@ -1,0 +1,58 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #161616;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header h1 {
+  font-size: 18px;
+}
+
+.header img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #e31c25;
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+}
+
+.header .right-section {
+  display: flex;
+  align-items: center;
+}
+
+.header .welcome {
+  margin-left: 10px;
+  margin-right: 20px;
+  font-size: 18px;
+}
+
+.header .logout {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  color: #e31c25;
+  font-size: 18px;
+}
+
+.header .logout:hover {
+  color: #BB000E;
+}
+
+.header .logout span {
+  margin-left: 5px;
+}
