@@ -4,9 +4,9 @@ import './auth.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faKey, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-const Register = ({ username, password, setUsername, setPassword }) => {
+const Register = ({ username, password, setUsername, setPassword, handleSubmit }) => {
   return (
-    <form className="auth-form">
+    <form className="auth-form" onSubmit={handleSubmit}>
       <div className='title-auth'>
         <p>Create a new account</p>
       </div>
@@ -35,7 +35,8 @@ Register.propTypes = {
   username: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   setUsername: PropTypes.func.isRequired,
-  setPassword: PropTypes.func.isRequired
+  setPassword: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default Register;
