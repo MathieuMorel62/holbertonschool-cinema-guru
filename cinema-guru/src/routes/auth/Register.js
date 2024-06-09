@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './auth.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faKey, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const Register = ({ username, password, setUsername, setPassword }) => {
   return (
@@ -26,7 +26,7 @@ const Register = ({ username, password, setUsername, setPassword }) => {
           onChange={(e) => setPassword(e.target.value)} 
         />
       </div>
-      <button type="submit" className='btn-auth'><FontAwesomeIcon icon={faKey} className="input-icon" /> Sign Up</button>
+      <button type="submit" className='btn-auth'><FontAwesomeIcon icon={faPlus} className="input-icon" /> Sign Up</button>
     </form>
   );
 };
