@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Authentication from './routes/auth/Authentication';
 
-
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userUsername, setUserUsername] = useState("");
@@ -10,7 +9,7 @@ const App = () => {
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
     if (accessToken) {
-      fetch('/api/auth/', {
+      fetch('http://localhost:8000/api/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +34,7 @@ const App = () => {
       {isLoggedIn ? (
         <div>Welcome, {userUsername}!</div>
       ) : (
-        <Authentication />
+        <Authentication setIsLoggedIn={setIsLoggedIn} setUserUsername={setUserUsername} />
       )}
     </div>
   );
