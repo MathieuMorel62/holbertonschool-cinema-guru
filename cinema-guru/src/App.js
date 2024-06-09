@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Authentication from './routes/auth/Authentication';
+import Dashboard from './routes/dashboard/Dashboard';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,7 +33,7 @@ const App = () => {
   return (
     <div className="App">
       {isLoggedIn ? (
-        <div>Welcome, {userUsername}!</div>
+        <Dashboard userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} />
       ) : (
         <Authentication setIsLoggedIn={setIsLoggedIn} setUserUsername={setUserUsername} />
       )}
