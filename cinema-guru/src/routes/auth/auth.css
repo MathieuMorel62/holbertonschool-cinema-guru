@@ -5,6 +5,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 500;
 }
 
 .title-auth {
@@ -50,7 +51,8 @@ body {
   align-items: center;
 }
 
-.auth-form label, .auth-form .input-icon {
+.auth-form label,
+.auth-form .input-icon {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -58,7 +60,8 @@ body {
 }
 
 .auth-form .input-icon {
-  color: grey;
+  color: #f44336;
+  opacity: 0.5;
 }
 
 .auth-form input {
@@ -83,14 +86,16 @@ body {
   color: white;
   border: none;
   cursor: pointer;
-  width: 123px;
+  width: 104px;
   font-size: 14px;
   margin-bottom: 20px;
+  white-space: nowrap;
 }
 
 .auth-form button .input-icon {
-  margin-right: 16px;
+  margin-right: 9px;
   color: white;
+  opacity: 1;
 }
 
 .btn-auth {
