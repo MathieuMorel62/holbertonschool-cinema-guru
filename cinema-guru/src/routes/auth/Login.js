@@ -4,9 +4,9 @@ import './auth.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 
-const Login = ({ username, password, setUsername, setPassword }) => {
+const Login = ({ username, password, setUsername, setPassword, handleSubmit }) => {
   return (
-    <form className="auth-form">
+    <form className="auth-form" onSubmit={handleSubmit}>
       <div className='title-auth'>
         <p>Sign in with your account</p>
       </div>
@@ -36,6 +36,7 @@ Login.propTypes = {
   password: PropTypes.string.isRequired,
   setUsername: PropTypes.func.isRequired,
   setPassword: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 export default Login;
