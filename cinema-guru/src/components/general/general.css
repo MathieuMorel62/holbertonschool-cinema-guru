@@ -1,4 +1,4 @@
-/* Styles généraux pour les composants */
+/* General */
 
 .input-container, .select-input-container, .search-bar, .button {
   margin: 10px 0;
@@ -27,6 +27,15 @@
   border-top: none;
 }
 
+/* Select Input */
+
+.select-input-container select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 74px;
+}
+
 /* Button */
 .input-container .input-icon, .button .button-icon {
   margin-right: 5px;
@@ -38,15 +47,14 @@
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
-  background-color: transparent;
-  border: 1px solid #e31c25;
+  background-color: #BB000E;
+  border: none;
   color: white;
-  border-radius: 50px;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: #e31c25;
+  background-color: #E31C25;
 }
 
 /* Search bar */
