@@ -14,7 +14,7 @@
 }
 
 .header h1 {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .header img {
@@ -37,7 +37,7 @@
 .header .welcome {
   margin-left: 10px;
   margin-right: 20px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .header .logout {
@@ -46,7 +46,7 @@
   align-items: center;
   margin-left: 20px;
   color: #e31c25;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .header .logout:hover {
@@ -55,4 +55,56 @@
 
 .header .logout span {
   margin-left: 5px;
+}
+
+/* Styles for navigation sidebar */
+.sidebar {
+  background-color: #BB000E;
+  color: white;
+  height: 100%;
+  width: 218px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-x: hidden;
+  transition: width 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar.small {
+  width: 50px;
+}
+
+.sidebar .navigation {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 100px;
+}
+
+.sidebar .navigation li {
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+}
+
+.sidebar .navigation li:hover {
+  background-color: #e31c25;
+}
+
+.sidebar .navigation li:hover::after {
+  content: '→';
+  position: absolute;
+  right: 20px;
+  font-size: 18px;
+}
+
+.sidebar .navigation li svg {
+  margin-right: 25px;
+  margin-left: -10px;
+  padding: 5px;
 }
