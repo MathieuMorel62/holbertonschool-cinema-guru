@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './general.css';
 
-const SelectInput = ({ label, options = [], className, value, setValue }) => {
+const SelectInput = ({
+  label,
+  options = [],
+  className = '',
+  value = '',
+  setValue = () => {}
+}) => {
   const handleSelect = (event) => {
     setValue(event.target.value);
   };
@@ -30,8 +36,8 @@ SelectInput.propTypes = {
     })
   ).isRequired,
   className: PropTypes.string,
-  value: PropTypes.any.isRequired,
-  setValue: PropTypes.func.isRequired,
+  value: PropTypes.any,
+  setValue: PropTypes.func,
 };
 
 export default SelectInput;
