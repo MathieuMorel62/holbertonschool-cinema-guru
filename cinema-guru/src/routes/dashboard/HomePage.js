@@ -1,0 +1,93 @@
+//good
+import React, { useState, useEffect } from 'react';
+import './dashboard.css';
+import MovieCard from '../../components/movies/MovieCard';
+import Filter from '../../components/movies/Filter';
+import Button from '../../components/general/Button';
+import axios from 'axios';
+
+const HomePage = () => {
+  const [movies, setMovies] = useState([]);
+  const [minYear, setMinYear] = useState(1970);
+  const [maxYear, setMaxYear] = useState(2022);
+  const [genres, setGenres] = useState([]);
+  const [sort, setSort] = useState("");
+  const [title, setTitle] = useState("");
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const loadMovies = async (page) => {
+    const token = localStorage.getItem('accessToken');
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await axios.get('http://localhost:8000/api/titles/advancedsearch', {
+        params: {
+          minYear,
+          maxYear,
+          genres: genres.join(','),
+          title,
+          sort,
+          page
+        },
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      
+      const newMovies = response.data.titles;
+      setMovies(prevMovies => {
+        const existingIds = new Set(prevMovies.map(movie => movie.imdbId));
+        const filteredMovies = newMovies.filter(movie => !existingIds.has(movie.imdbId));
+        return [...prevMovies, ...filteredMovies];
+      });
+    } catch (error) {
+      console.error('Error loading movies:', error);
+      setError('Failed to load movies. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    setMovies([]);
+    loadMovies(1);
+    setPage(1);
+  }, [minYear, maxYear, genres, sort, title]);
+
+  const handleLoadMore = () => {
+    const nextPage = page + 1;
+    loadMovies(nextPage);
+    setPage(nextPage);
+  };
+
+  return (
+    <div className="home-page">
+      <Filter 
+        minYear={minYear.toString()} 
+        setMinYear={(year) => setMinYear(Number(year))} 
+        maxYear={maxYear.toString()} 
+        setMaxYear={(year) => setMaxYear(Number(year))} 
+        sort={sort} 
+        setSort={setSort} 
+        genres={genres} 
+        setGenres={setGenres} 
+        title={title} 
+        setTitle={setTitle} 
+      />
+      {error && <p className="error-message">{error}</p>}
+      <div className="movie-list">
+        {movies.map((movie, index) => (
+          <MovieCard key={`${movie.imdbId}-${index}`} movie={movie} />
+        ))}
+      </div>
+      {loading && <p>Loading...</p>}
+      {!loading && <div className="button-container">
+        <Button className='btn-hp' label="Load More.." onClick={handleLoadMore} />
+      </div>}
+    </div>
+  );
+};
+
+export default HomePage;
