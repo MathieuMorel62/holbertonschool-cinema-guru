@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './general.css';
 
-
-const SearchBar = ({ title, setTitle, icon }) => {
+const SearchBar = ({
+  title = '',
+  setTitle = () => {},
+  icon = null
+}) => {
   const handleInput = (event) => {
     setTitle(event.target.value);
   };
@@ -23,8 +26,8 @@ const SearchBar = ({ title, setTitle, icon }) => {
 };
 
 SearchBar.propTypes = {
-  title: PropTypes.string.isRequired,
-  setTitle: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  setTitle: PropTypes.func,
   icon: PropTypes.object,
 };
 
