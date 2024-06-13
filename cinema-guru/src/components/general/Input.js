@@ -3,7 +3,15 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './general.css';
 
-const Input = ({ label, type, className, value, setValue, icon, inputAttributes }) => {
+const Input = ({
+  label,
+  type,
+  className = '',
+  value = '',
+  setValue = () => {},
+  icon = null,
+  inputAttributes = {}
+}) => {
   const handleInput = (event) => {
     setValue(event.target.value);
   };
@@ -26,8 +34,8 @@ Input.propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   className: PropTypes.string,
-  value: PropTypes.any.isRequired,
-  setValue: PropTypes.func.isRequired,
+  value: PropTypes.any,
+  setValue: PropTypes.func,
   icon: PropTypes.object,
   inputAttributes: PropTypes.object,
 };
