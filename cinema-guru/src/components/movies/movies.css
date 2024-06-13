@@ -1,0 +1,165 @@
+/* Filter Container */
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-top: 70px;
+}
+
+.filter-left {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.search-bar-container {
+  display: flex;
+  margin-left: 50px;
+  margin-bottom: 0px;
+}
+
+.filter-sort {
+  display: flex;
+  gap: 30px;
+  margin-left: 50px;
+}
+
+/* Tag Container */
+.filter-right {
+  width: 30%;
+  display: flex;
+  align-items: flex-start;
+  margin-right: 45px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.tag {
+  padding: 3px 15px;
+  border: 1px solid #e31c25;
+  border-radius: 20px;
+  margin: 7px 5px 5px 0; 
+  cursor: pointer;
+  list-style: none;
+  font-size: 16px;
+}
+
+.tag.selected {
+  background-color: #e31c25;
+  color: white;
+}
+
+/* Movie card */
+.movie-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-right: 30px;
+  margin-top: 50px;
+  width: 300px;
+  height: 398px;
+  background-color: #1c1c1c;
+  color: white;
+  list-style: none;
+  position: relative;
+  transition: transform 0.5s ease-in-out;
+  border: 1px solid #1c1c1c;
+}
+
+.movie-card:hover {
+  transform: scale(1.1);
+}
+
+.movie-card img {
+  width: 300px;
+}
+
+.movie-info {
+  position: absolute;
+  bottom: 0;
+  background-color: black;
+  width: 100%;
+}
+
+.movie-info p {
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 15px;
+  margin: 5px 1px;
+}
+
+.movie-info h3 {
+  display: flex;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: rgba(130, 121, 121, 0.2);
+}
+
+.movie-genres {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.movie-genre {
+  background-color: #e31c25;
+  color: white;
+  padding: 3px 6px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50px;
+}
+
+.movie-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.icon {
+  cursor: pointer;
+  width: 19px;
+  height: 19px;
+}
+
+.icon.selected {
+  color: red;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -30px;
+  margin-left: 70px;
+  margin-right: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
