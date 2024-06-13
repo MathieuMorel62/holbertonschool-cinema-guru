@@ -7,18 +7,20 @@ import Activity from '../Activity';
 import './navigation.css';
 
 const SideBar = () => {
-  const [selected, setSelected] = useState("home");
   const [small, setSmall] = useState(false);
   const [activities, setActivities] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const setPage = (pageName) => {
-    setSelected(pageName);
     navigate(`/${pageName}`);
   };
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const token = localStorage.getItem('accessToken');
         const response = await axios.get('http://localhost:8000/api/activity', {
@@ -30,6 +32,9 @@ const SideBar = () => {
         setActivities(response.data);
       } catch (error) {
         console.error('Error fetching activities:', error);
+        setError('Failed to load activities. Please try again later.');
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -63,15 +68,17 @@ const SideBar = () => {
             <div className="divider"></div>
           </div>
           <ul className="activities">
-            {activities.length === 0 ? (
+            {loading && <li>Loading...</li>}
+            {error && <li className="activity-error">{error}</li>}
+            {!loading && activities.length === 0 ? (
               <li className="activity-empty">Empty list</li>
             ) : (
               activities.slice(0, 10).map(activity => (
                 <Activity
                   key={activity.id}
-                  username={activity.username}
-                  movieTitle={activity.movieTitle}
-                  date={activity.date}
+                  username={activity.user.username}
+                  movieTitle={activity.title.title}
+                  date={activity.createdAt}
                 />
               ))
             )}
