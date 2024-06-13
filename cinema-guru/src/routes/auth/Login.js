@@ -10,15 +10,15 @@ const Login = ({ username, password, setUsername, setPassword, handleSubmit }) =
       <div className='title-auth'>
         <p>Sign in with your account</p>
       </div>
-      <div className="input-container">
+      <div className="input-container-log">
         <label><FontAwesomeIcon icon={faUser} className="input-icon" /> Username:</label>
         <input 
-          type="text" 
+          type="text"
           value={username} 
           onChange={(e) => setUsername(e.target.value)} 
         />
       </div>
-      <div className="input-container">
+      <div className="input-container-log">
         <label><FontAwesomeIcon icon={faKey} className="input-icon" /> Password:</label>
         <input 
           type="password" 
