@@ -5,10 +5,59 @@
   position: fixed;
   top: 0;
   left: 0;
+  overflow-y: auto;
 }
 
 .dashboard-content {
   flex-grow: 1;
   color: white;
   padding: 20px;
+}
+
+/* favorite */
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.favorites-page {
+  margin-top: 90px;
+  padding-bottom: 40px;
+}
+
+.favorites-page h1 {
+  text-align: center;
+  font-size: 43px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.favorites-page hr {
+  width: 20%;
+  margin-top: -20px;
+  margin-bottom: 40px;
+  border: 2px solid red;
+}
+
+/* watchlater */
+.watchlater-page {
+  margin-top: 90px;
+  padding-bottom: 40px;
+}
+
+.watchlater-page h1 {
+  text-align: center;
+  font-size: 43px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.watchlater-page hr {
+  width: 30%;
+  margin-top: -20px;
+  margin-bottom: 40px;
+  border: 2px solid red;
 }
