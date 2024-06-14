@@ -11,9 +11,11 @@ const SideBar = () => {
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedPage, setSelectedPage] = useState('home');
   const navigate = useNavigate();
 
   const setPage = (pageName) => {
+    setSelectedPage(pageName);
     navigate(`/${pageName}`);
   };
 
@@ -48,15 +50,24 @@ const SideBar = () => {
       onMouseLeave={() => setSmall(true)}
     >
       <ul className="navigation">
-        <li onClick={() => setPage("home")}>
+        <li 
+          onClick={() => setPage("home")}
+          className={selectedPage === 'home' ? 'selected' : ''}
+        >
           <FontAwesomeIcon icon={faFolder} />
           { !small && "Home" }
         </li>
-        <li onClick={() => setPage("favorites")}>
+        <li 
+          onClick={() => setPage("favorites")}
+          className={selectedPage === 'favorites' ? 'selected' : ''}
+        >
           <FontAwesomeIcon icon={faStar} />
           { !small && "Favorites" }
         </li>
-        <li onClick={() => setPage("watchlater")}>
+        <li 
+          onClick={() => setPage("watchlater")}
+          className={selectedPage === 'watchlater' ? 'selected' : ''}
+        >
           <FontAwesomeIcon icon={faClock} />
           { !small && "Watch Later" }
         </li>
@@ -79,6 +90,7 @@ const SideBar = () => {
                   username={activity.user.username}
                   movieTitle={activity.title.title}
                   date={activity.createdAt}
+                  activityType={activity.activityType}
                 />
               ))
             )}
