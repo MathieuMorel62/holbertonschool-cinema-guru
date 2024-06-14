@@ -71,6 +71,7 @@
   position: relative;
   transition: transform 0.5s ease-in-out;
   border: 1px solid #1c1c1c;
+  cursor: pointer;
 }
 
 .movie-card:hover {
