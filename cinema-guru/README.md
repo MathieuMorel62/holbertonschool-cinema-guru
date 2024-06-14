@@ -74,6 +74,13 @@ yarn start
 
 ## 📸 Screenshot
 
+<img width="19%" alt="sign-in" src="https://github.com/MathieuMorel62/holbertonschool-cinema-guru/assets/113856302/6ca73d7c-9a26-42fd-b436-f26621162cfe"> <img width="19%" alt="homepage" src="https://github.com/MathieuMorel62/holbertonschool-cinema-guru/assets/113856302/60433663-1307-45cb-a9b2-3658bd9c9eda"> <img width="19%" alt="favorites" src="https://github.com/MathieuMorel62/holbertonschool-cinema-guru/assets/113856302/ccc1d6e8-8d78-4886-a176-9f29130dcd70"> <img width="19%" alt="watch-later" src="https://github.com/MathieuMorel62/holbertonschool-cinema-guru/assets/113856302/f72c5ba0-f74e-440f-825a-845429f9dabc"> <img width="19%" alt="modal" src="https://github.com/MathieuMorel62/holbertonschool-cinema-guru/assets/113856302/d77c4d6c-ce86-49e4-af8c-d6ba92e4de26">
+
+
+
+
+
+
 
 ## 💡 Use
 
