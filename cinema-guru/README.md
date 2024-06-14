@@ -1,5 +1,7 @@
 # <p align='center'>🌟 Implement an App with React 🌟</p>
 
+![cinema](https://github.com/MathieuMorel62/holbertonschool-cinema-guru/assets/113856302/0ceaa134-9e96-4a46-abab-bc00037ec60a)
+
 # 📝 Description
 
 This project consists of a cinema application in which we keep track of our favorite films and establish a list of movies to watch later. The interface was built using the ReactJs knowledge accumulated in previous projects and displays the data of an API.
