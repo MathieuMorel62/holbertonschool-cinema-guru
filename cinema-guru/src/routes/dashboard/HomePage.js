@@ -1,9 +1,9 @@
-//good
 import React, { useState, useEffect } from 'react';
 import './dashboard.css';
 import MovieCard from '../../components/movies/MovieCard';
 import Filter from '../../components/movies/Filter';
 import Button from '../../components/general/Button';
+import Modal from '../../components/movies/Modal';
 import axios from 'axios';
 
 const HomePage = () => {
@@ -16,6 +16,7 @@ const HomePage = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   const loadMovies = async (page) => {
     const token = localStorage.getItem('accessToken');
@@ -35,7 +36,7 @@ const HomePage = () => {
           'Authorization': `Bearer ${token}`
         }
       });
-      
+
       const newMovies = response.data.titles;
       setMovies(prevMovies => {
         const existingIds = new Set(prevMovies.map(movie => movie.imdbId));
@@ -62,6 +63,10 @@ const HomePage = () => {
     setPage(nextPage);
   };
 
+  const handleCloseModal = () => {
+    setSelectedMovie(null);
+  };
+
   return (
     <div className="home-page">
       <Filter 
@@ -79,13 +84,16 @@ const HomePage = () => {
       {error && <p className="error-message">{error}</p>}
       <div className="movie-list">
         {movies.map((movie, index) => (
-          <MovieCard key={`${movie.imdbId}-${index}`} movie={movie} />
+          <MovieCard key={`${movie.imdbId}-${index}`} movie={movie} onClick={setSelectedMovie} />
         ))}
       </div>
       {loading && <p>Loading...</p>}
       {!loading && <div className="button-container">
         <Button className='btn-hp' label="Load More.." onClick={handleLoadMore} />
       </div>}
+      {selectedMovie && (
+        <Modal movie={selectedMovie} onClose={handleCloseModal} />
+      )}
     </div>
   );
 };
