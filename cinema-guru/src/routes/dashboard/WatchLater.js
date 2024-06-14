@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import MovieCard from '../../components/movies/MovieCard';
-import './dashboard.css';
+// good
 
+import React, { useState, useEffect } from 'react';
+import './dashboard.css';
+import MovieCard from '../../components/movies/MovieCard';
+import Modal from '../../components/movies/Modal';
+import axios from 'axios';
 
 const WatchLater = () => {
   const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     const fetchWatchLater = async () => {
@@ -25,15 +28,24 @@ const WatchLater = () => {
     fetchWatchLater();
   }, []);
 
+  const handleCardClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedMovie(null);
+  };
+
   return (
     <div className="watchlater-page">
       <h1>Movies to watch later</h1>
-      <hr></hr>
+      <hr />
       <div className="movie-list">
         {movies.map((movie, index) => (
-          <MovieCard key={`${movie.imdbId}-${index}`} movie={movie} />
+          <MovieCard key={`${movie.imdbId}-${index}`} movie={movie} onClick={() => handleCardClick(movie)} />
         ))}
       </div>
+      {selectedMovie && <Modal movie={selectedMovie} onClose={handleCloseModal} />}
     </div>
   );
 };
