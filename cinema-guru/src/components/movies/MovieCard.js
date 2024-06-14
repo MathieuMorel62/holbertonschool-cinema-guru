@@ -1,4 +1,4 @@
-//good
+// good
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './movies.css';
@@ -8,7 +8,8 @@ import axios from 'axios';
 import useImage from '../../hooks/useImage';
 import popcornImage from '../../assets/popcorn.png';
 
-const MovieCard = ({ movie: { imdbId, title, synopsis, imageurls = [], genres } }) => {
+const MovieCard = ({ movie, onClick }) => {
+  const { imdbId, title, synopsis, imageurls = [], genres } = movie;
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
   const posterUrl = useImage(imageurls.length > 0 ? imageurls[0] : popcornImage, popcornImage);
@@ -52,18 +53,24 @@ const MovieCard = ({ movie: { imdbId, title, synopsis, imageurls = [], genres } 
   };
 
   return (
-    <li className="movie-card">
+    <li className="movie-card" onClick={() => onClick(movie)}>
       {posterUrl && <img src={posterUrl} alt={title} />}
       <div className="movie-actions">
         <FontAwesomeIcon 
           icon={faStar} 
           className={`icon ${isFavorite ? 'selected' : ''}`} 
-          onClick={() => handleClick('favorite')} 
+          onClick={(e) => {
+            e.stopPropagation();
+            handleClick('favorite');
+          }} 
         />
         <FontAwesomeIcon 
           icon={faClock} 
           className={`icon ${isWatchLater ? 'selected' : ''}`} 
-          onClick={() => handleClick('watchlater')} 
+          onClick={(e) => {
+            e.stopPropagation();
+            handleClick('watchlater');
+          }} 
         />
       </div>
       <div className="movie-info">
@@ -86,7 +93,8 @@ MovieCard.propTypes = {
     synopsis: PropTypes.string,
     imageurls: PropTypes.arrayOf(PropTypes.string),
     genres: PropTypes.arrayOf(PropTypes.string).isRequired
-  }).isRequired
+  }).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default MovieCard;
