@@ -1,10 +1,13 @@
+// good
 import React, { useState, useEffect } from 'react';
 import './dashboard.css';
 import MovieCard from '../../components/movies/MovieCard';
+import Modal from '../../components/movies/Modal';
 import axios from 'axios';
 
 const Favorites = () => {
   const [movies, setMovies] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -24,15 +27,24 @@ const Favorites = () => {
     fetchFavorites();
   }, []);
 
+  const handleCardClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedMovie(null);
+  };
+
   return (
     <div className="favorites-page">
       <h1>Movies you like</h1>
-      <hr></hr>
+      <hr />
       <div className="movie-list">
         {movies.map((movie, index) => (
-          <MovieCard key={`${movie.imdbId}-${index}`} movie={movie} />
+          <MovieCard key={`${movie.imdbId}-${index}`} movie={movie} onClick={() => handleCardClick(movie)} />
         ))}
       </div>
+      {selectedMovie && <Modal movie={selectedMovie} onClose={handleCloseModal} />}
     </div>
   );
 };
