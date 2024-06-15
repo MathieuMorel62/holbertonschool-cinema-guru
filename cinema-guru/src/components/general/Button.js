@@ -4,7 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './general.css';
 
 
-const Button = ({ label, className, onClick, icon }) => {
+// Component for a button with an optional icon
+const Button = ({
+  label,
+  className = '',
+  onClick,
+  icon = null
+}) => {
+
   return (
     <button className={`button ${className}`} onClick={onClick}>
       {icon && <FontAwesomeIcon icon={icon} className="button-icon" />}

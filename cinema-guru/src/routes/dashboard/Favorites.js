@@ -1,14 +1,16 @@
-// good
 import React, { useState, useEffect } from 'react';
 import './dashboard.css';
 import MovieCard from '../../components/movies/MovieCard';
 import Modal from '../../components/movies/Modal';
 import axios from 'axios';
 
+
+// Component to display the favorite movies
 const Favorites = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
+  // Fetch the favorite movies from the API
   useEffect(() => {
     const fetchFavorites = async () => {
       const token = localStorage.getItem('accessToken');
@@ -27,10 +29,12 @@ const Favorites = () => {
     fetchFavorites();
   }, []);
 
+  // Handle clicking on a movie card to display the modal
   const handleCardClick = (movie) => {
     setSelectedMovie(movie);
   };
 
+  // Handle the close of the modal
   const handleCloseModal = () => {
     setSelectedMovie(null);
   };

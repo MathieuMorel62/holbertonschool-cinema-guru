@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './general.css';
 
+
+// SelectInput component to create a selection field with a label and options
 const SelectInput = ({
   label,
   options = [],
@@ -9,6 +11,8 @@ const SelectInput = ({
   value = '',
   setValue = () => {}
 }) => {
+
+  // Update the value of the select input
   const handleSelect = (event) => {
     setValue(event.target.value);
   };

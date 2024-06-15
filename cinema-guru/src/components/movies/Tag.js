@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import './movies.css';
 import PropTypes from 'prop-types';
+import './movies.css';
 
-const Tag = ({ genre, filter, genres, setGenres }) => {
+
+// Tag component to filter movie genres
+const Tag = ({ genre, genres, setGenres }) => {
   const [selected, setSelected] = useState(false);
 
+  // Manages the click on the tag to add or remove a genre from the list
   const handleTag = () => {
     if (selected) {
       setGenres(genres.filter(g => g !== genre));
-      setSelected(false);
     } else {
       setGenres([...genres, genre]);
-      setSelected(true);
     }
+    setSelected(!selected);
   };
 
   return (
@@ -24,7 +26,6 @@ const Tag = ({ genre, filter, genres, setGenres }) => {
 
 Tag.propTypes = {
   genre: PropTypes.string.isRequired,
-  filter: PropTypes.bool.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   setGenres: PropTypes.func.isRequired,
 };

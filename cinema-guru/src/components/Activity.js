@@ -3,26 +3,26 @@ import PropTypes from 'prop-types';
 import { format } from 'date-fns';
 import './components.css';
 
-const Activity = ({ username = 'Unknown', movieTitle = 'Unknown', date = 'Unknown', activityType = 'Unknown' }) => {
-  const formattedDate = format(new Date(date), 'MMMM dd, yyyy');
-  let activityMessage;
 
-  switch (activityType) {
-    case 'favorite':
-      activityMessage = 'added to favorites';
-      break;
-    case 'watchLater':
-      activityMessage = 'added to watch later';
-      break;
-    case 'removeFavorited':
-      activityMessage = 'removed from favorites';
-      break;
-    case 'removeWatchLater':
-      activityMessage = 'removed from watch later';
-      break;
-    default:
-      activityMessage = 'performed an activity';
-  }
+// Activity component that displays a message based on user activity
+const Activity = ({
+  username = 'Unknown',
+  movieTitle = 'Unknown',
+  date = 'Unknown',
+  activityType = 'Unknown'
+}) => {
+  // Format the date to be more readable
+  const formattedDate = format(new Date(date), 'MMMM dd, yyyy');
+
+  // Get the activity message based on the activity type
+  const activityMessages = {
+    favorite: 'added to favorites',
+    watchLater: 'added to watch later',
+    removeFavorited: 'removed from favorites',
+    removeWatchLater: 'removed from watch later',
+  };
+
+  const activityMessage = activityMessages[activityType] || 'performed an activity';
 
   return (
     <li className="activity-item">

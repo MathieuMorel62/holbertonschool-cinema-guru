@@ -1,79 +1,90 @@
-/* General */
+/* GENERAL STYLES
+  ======================== */
+  .input-container,
+  .select-input-container,
+  .search-bar,
+  .button {
+    margin: 10px 0;
+  }
 
-.input-container, .select-input-container, .search-bar, .button {
-  margin: 10px 0;
-}
+/* INPUT STYLES
+  ======================== */
+  .input-container label,
+  .select-input-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    text-align: left;
+  }
 
-/* input component */
-.input-container label, .select-input-container label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 16px;
-  text-align: left;
-}
+  .input-container input {
+    width: 204px;
+    height: 21px;
+    padding-left: 5px;
+    border: 2px solid transparent;
+    background-color: #2C2C2C;
+    color: #FFFFFF;
+  }
 
-.input-container input{
-  width: 204px;
-  height: 21px;
-  background-color: #2C2C2C;
-  color: #FFFFFF;
-  padding-left: 5px;
-  border: 2px solid transparent;
-}
+  .input-container input:focus,
+  .select-input-container select:focus {
+    border: 2px solid #e31c25;
+    outline: none;
+  }
 
-.input-container input:focus, .select-input-container select:focus{
-  border: 2px solid #e31c25;
-  outline: none;
-}
+  .input-container input:not(:focus),
+  .select-input-container select:not(:focus) {
+    border-bottom: 2px solid #e31c25;
+  }
 
-.input-container input:not(:focus), .select-input-container select:not(:focus){
-  border-bottom: 2px solid #e31c25;
-}
 
-/* Select Input */
+/* SELECT INPUT STYLES
+  ======================== */
+  .select-input-container select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 27px;
+    border: 2px solid transparent;
+    background-color: #2C2C2C;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
 
-.select-input-container select {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  height: 27px;
-  background-color: #2C2C2C;
-  color: #FFFFFF;
-  border: 2px solid transparent;
-  cursor: pointer;
-}
+/* BUTTON STYLES
+  ======================== */
+  .input-container .input-icon,
+  .button .button-icon {
+    margin-right: 5px;
+  }
 
-/* Button */
-.input-container .input-icon, .button .button-icon {
-  margin-right: 5px;
-}
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 50px;
+    width: auto;
+    border: none;
+    white-space: nowrap;
+    background-color: #BB000E;
+    color: white;
+    cursor: pointer;
+  }
 
-.button {
-  display: flex;
-  width: 50px;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 50px;
-  background-color: #BB000E;
-  border: none;
-  color: white;
-  cursor: pointer;
-  white-space: nowrap;
-}
+  .button:hover {
+    background-color: #E31C25;
+  }
 
-.button:hover {
-  background-color: #E31C25;
-}
-
-/* Search bar */
-.search-bar input {
-  width: 535px;
-  height: 28px;
-  border-radius: 20px;
-  border: 1px solid #2C2C2C;
-  background-color: #2C2C2C;
-  outline: none;
-  padding-left: 30px;
-  color: #FFFFFF;
-}
+/* SEARCH BAR STYLES
+  ======================== */
+  .search-bar input {
+    width: 535px;
+    height: 28px;
+    padding-left: 30px;
+    border: 1px solid #2C2C2C;
+    border-radius: 20px;
+    background-color: #2C2C2C;
+    outline: none;
+    color: #FFFFFF;
+  }

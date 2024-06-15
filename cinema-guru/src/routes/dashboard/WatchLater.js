@@ -1,15 +1,16 @@
-// good
-
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './dashboard.css';
 import MovieCard from '../../components/movies/MovieCard';
 import Modal from '../../components/movies/Modal';
-import axios from 'axios';
 
+
+// Component to display the watch later movies
 const WatchLater = () => {
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
+  // Fetch the watch later movies from the API
   useEffect(() => {
     const fetchWatchLater = async () => {
       const token = localStorage.getItem('accessToken');
@@ -28,10 +29,12 @@ const WatchLater = () => {
     fetchWatchLater();
   }, []);
 
+  // Handle clicking on a movie card to display the modal
   const handleCardClick = (movie) => {
     setSelectedMovie(movie);
   };
 
+  // Handle the close of the modal
   const handleCloseModal = () => {
     setSelectedMovie(null);
   };

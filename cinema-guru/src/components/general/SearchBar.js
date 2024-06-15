@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './general.css';
 
+
+// Component for a search bar with an optional icon
 const SearchBar = ({
   title = '',
   setTitle = () => {},
   icon = null
 }) => {
+  // Update the value of the search bar
   const handleInput = (event) => {
     setTitle(event.target.value);
   };
@@ -28,7 +31,6 @@ const SearchBar = ({
 SearchBar.propTypes = {
   title: PropTypes.string,
   setTitle: PropTypes.func,
-  icon: PropTypes.object,
-};
+  icon: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),};
 
 export default SearchBar;

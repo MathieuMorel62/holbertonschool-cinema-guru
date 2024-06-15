@@ -1,10 +1,13 @@
 import React from 'react';
-import './navigation.css';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import './navigation.css';
 
 
+// Header component that displays the navigation bar
 const Header = ({ userUsername, setIsLoggedIn }) => {
+  // Function to log out the user
   const logout = () => {
     localStorage.removeItem('accessToken');
     setIsLoggedIn(false);
@@ -25,6 +28,11 @@ const Header = ({ userUsername, setIsLoggedIn }) => {
       </div>
     </nav>
   );
+};
+
+Header.propTypes = {
+  userUsername: PropTypes.string.isRequired,
+  setIsLoggedIn: PropTypes.func.isRequired,
 };
 
 export default Header;

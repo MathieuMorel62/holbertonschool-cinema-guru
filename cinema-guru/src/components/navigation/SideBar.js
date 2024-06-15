@@ -6,6 +6,8 @@ import { faFolder, faStar, faClock } from '@fortawesome/free-solid-svg-icons';
 import Activity from '../Activity';
 import './navigation.css';
 
+
+// SideBar component that displays the sidebar navigation
 const SideBar = () => {
   const [small, setSmall] = useState(false);
   const [activities, setActivities] = useState([]);
@@ -14,11 +16,13 @@ const SideBar = () => {
   const [selectedPage, setSelectedPage] = useState('home');
   const navigate = useNavigate();
 
+  // Function to set the selected page and navigate to the page
   const setPage = (pageName) => {
     setSelectedPage(pageName);
     navigate(`/${pageName}`);
   };
 
+  // Fetch the latest activities when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -30,10 +34,8 @@ const SideBar = () => {
             'Authorization': `Bearer ${token}`
           }
         });
-        console.log('Activities fetched:', response.data); // Log pour vérifier les données reçues
         setActivities(response.data);
       } catch (error) {
-        console.error('Error fetching activities:', error);
         setError('Failed to load activities. Please try again later.');
       } finally {
         setLoading(false);
@@ -50,27 +52,30 @@ const SideBar = () => {
       onMouseLeave={() => setSmall(true)}
     >
       <ul className="navigation">
-        <li 
-          onClick={() => setPage("home")}
-          className={selectedPage === 'home' ? 'selected' : ''}
-        >
-          <FontAwesomeIcon icon={faFolder} />
-          { !small && "Home" }
-        </li>
-        <li 
-          onClick={() => setPage("favorites")}
-          className={selectedPage === 'favorites' ? 'selected' : ''}
-        >
-          <FontAwesomeIcon icon={faStar} />
-          { !small && "Favorites" }
-        </li>
-        <li 
-          onClick={() => setPage("watchlater")}
-          className={selectedPage === 'watchlater' ? 'selected' : ''}
-        >
-          <FontAwesomeIcon icon={faClock} />
-          { !small && "Watch Later" }
-        </li>
+        <NavItem 
+          icon={faFolder} 
+          label="Home" 
+          pageName="home" 
+          selectedPage={selectedPage} 
+          setPage={setPage} 
+          small={small} 
+        />
+        <NavItem 
+          icon={faStar} 
+          label="Favorites" 
+          pageName="favorites" 
+          selectedPage={selectedPage} 
+          setPage={setPage} 
+          small={small} 
+        />
+        <NavItem 
+          icon={faClock} 
+          label="Watch Later" 
+          pageName="watchlater" 
+          selectedPage={selectedPage} 
+          setPage={setPage} 
+          small={small} 
+        />
       </ul>
       { !small && (
         <div className="activities-container">
@@ -100,5 +105,16 @@ const SideBar = () => {
     </nav>
   );
 };
+
+// NavItem component that displays a navigation item
+const NavItem = ({ icon, label, pageName, selectedPage, setPage, small }) => (
+  <li 
+    onClick={() => setPage(pageName)}
+    className={selectedPage === pageName ? 'selected' : ''}
+  >
+    <FontAwesomeIcon icon={icon} />
+    { !small && label }
+  </li>
+);
 
 export default SideBar;

@@ -1,11 +1,13 @@
 import React from 'react';
-import './modal.css';
 import PropTypes from 'prop-types';
+import './modal.css';
 import useImage from '../../hooks/useImage';
 import popcornImage from '../../assets/popcorn.png';
 
 
+// Modal component to display the details of a movie
 const Modal = ({ movie, onClose }) => {
+  // Custom hook to fetch the movie poster
   const posterUrl = useImage(movie.imageurls && movie.imageurls.length > 0 ? movie.imageurls[0] : popcornImage, popcornImage);
   const defaultSynopsis = "Synopsis not available";
 

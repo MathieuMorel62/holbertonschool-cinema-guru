@@ -1,13 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './movies.css';
 import SearchBar from '../general/SearchBar';
 import Input from '../general/Input';
 import SelectInput from '../general/SelectInput';
 import Tag from './Tag';
-import PropTypes from 'prop-types';
 
-const Filter = ({ minYear, setMinYear, maxYear, setMaxYear, sort, setSort, genres, setGenres, title, setTitle }) => {
-  const genreList = ["action", "drama", "comedy", "biography", "romance", "thriller", "war", "history", "sport", "sci-fi", "documentary", "crime", "fantasy"];
+
+// Filter component to filter movies by year, genre, and title
+const Filter = ({
+  minYear,
+  setMinYear,
+  maxYear,
+  setMaxYear,
+  sort,
+  setSort,
+  genres,
+  setGenres,
+  title,
+  setTitle
+}) => {
+  // List of available film genres
+  const genreList = [
+    "action",
+    "drama",
+    "comedy",
+    "biography",
+    "romance",
+    "thriller",
+    "war",
+    "history",
+    "sport",
+    "sci-fi",
+    "documentary",
+    "crime",
+    "fantasy"
+  ];
+  // List of sort options
   const sortOptions = [
     { label: 'Latest', value: 'latest' },
     { label: 'Oldest', value: 'oldest' },

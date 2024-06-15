@@ -1,4 +1,3 @@
-// good
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './movies.css';
@@ -8,14 +7,16 @@ import axios from 'axios';
 import useImage from '../../hooks/useImage';
 import popcornImage from '../../assets/popcorn.png';
 
+
+// MovieCard component to display movie information and actions
 const MovieCard = ({ movie, onClick }) => {
   const { imdbId, title, synopsis, imageurls = [], genres } = movie;
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
   const posterUrl = useImage(imageurls.length > 0 ? imageurls[0] : popcornImage, popcornImage);
-
   const defaultSynopsis = "Synopsis not available";
 
+  // Fetch the favorite and watch later status of the movie
   useEffect(() => {
     const fetchStatus = async () => {
       const token = localStorage.getItem('accessToken');
@@ -32,10 +33,11 @@ const MovieCard = ({ movie, onClick }) => {
         console.error('Error fetching movie status:', error);
       }
     };
-
     fetchStatus();
   }, [imdbId]);
 
+
+  // Handle click events for adding/removing movie to/from favorite or watch later list
   const handleClick = async (type) => {
     const token = localStorage.getItem('accessToken');
     try {

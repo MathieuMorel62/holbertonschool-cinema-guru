@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './general.css';
 
+
+// Component for an input field with an optional icon
 const Input = ({
   label,
   type,
@@ -12,6 +14,8 @@ const Input = ({
   icon = null,
   inputAttributes = {}
 }) => {
+
+  // Update the value of the input field
   const handleInput = (event) => {
     setValue(event.target.value);
   };

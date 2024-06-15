@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './auth.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faKey, faPlus } from '@fortawesome/free-solid-svg-icons';
+import './auth.css';
 
+
+// Register component
 const Register = ({ username, password, setUsername, setPassword, handleSubmit }) => {
+
   return (
     <form className="auth-form" onSubmit={handleSubmit}>
       <div className='title-auth'>

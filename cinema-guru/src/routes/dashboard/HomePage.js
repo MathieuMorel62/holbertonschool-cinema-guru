@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './dashboard.css';
 import MovieCard from '../../components/movies/MovieCard';
 import Filter from '../../components/movies/Filter';
 import Button from '../../components/general/Button';
 import Modal from '../../components/movies/Modal';
-import axios from 'axios';
 
+
+// Component to display the home page
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   const [minYear, setMinYear] = useState(1970);
@@ -18,6 +20,7 @@ const HomePage = () => {
   const [error, setError] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
+  // Fetch the movies from the API
   const loadMovies = async (page) => {
     const token = localStorage.getItem('accessToken');
     setLoading(true);
@@ -37,6 +40,7 @@ const HomePage = () => {
         }
       });
 
+      // Filter out movies that are already in the list
       const newMovies = response.data.titles;
       setMovies(prevMovies => {
         const existingIds = new Set(prevMovies.map(movie => movie.imdbId));
@@ -51,18 +55,21 @@ const HomePage = () => {
     }
   };
 
+  // Load the movies when the component mounts
   useEffect(() => {
     setMovies([]);
     loadMovies(1);
     setPage(1);
   }, [minYear, maxYear, genres, sort, title]);
 
+  // Load more movies when the user scrolls to the bottom
   const handleLoadMore = () => {
     const nextPage = page + 1;
     loadMovies(nextPage);
     setPage(nextPage);
   };
 
+  // Handle clicking on a movie card to display the modal
   const handleCloseModal = () => {
     setSelectedMovie(null);
   };
